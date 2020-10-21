@@ -46,9 +46,12 @@
 
 <label for="foto">{{'Foto'}}</label>
 <br>
-{{$producto->foto}}
+
+<img src="{{asset('storage').'/'.$producto->foto}}" alt="" width="150">
+
 <br>
 <input type="file" name="foto" id="foto" value=""><br>
 
-<input type="submit" value="Editar">
+<input type="submit" value="Modificar">
+<a href="{{url('producto')}}">Regresar</a>
 </form>

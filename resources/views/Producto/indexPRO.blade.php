@@ -1,5 +1,7 @@
 Inicio (Despliegue de datos)
 
+<a href="{{url('producto/create')}}">Agregar Producto</a>
+
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
@@ -21,7 +23,10 @@ Inicio (Despliegue de datos)
     @foreach($datos as $producto)
         <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$producto->foto}}</td>
+
+            <td>
+            <img src="{{asset('storage').'/'.$producto->foto}}" alt="" width="150">
+            </td>
             <td>{{$producto->nombre}}</td>
             <td>{{$producto->referencia}}</td>
             <td>{{$producto->descripcioncorta}}</td>

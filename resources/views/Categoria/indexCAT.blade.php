@@ -1,3 +1,5 @@
+<a href="{{url('categoria/create')}}">Agregar Categoria</a>
+
 <table class="table table-light">
     <thead class="thead-light">
         <tr>

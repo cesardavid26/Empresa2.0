@@ -46,5 +46,7 @@ aqui se crea un producto
 <input type="file" name="foto" id="foto" valuer=""><br>
 
 <input type="submit" value="Agregar">
+<a href="{{url('producto')}}">Regresar</a>
+
 
 </form>

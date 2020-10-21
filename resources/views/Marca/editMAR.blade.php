@@ -7,5 +7,7 @@
 <label for="descripcion">{{'Descripcion'}}</label>
 <textarea type="text" name="descripcion" id="descripcion" rows="4" cols="50" value="{{$marca->descripcion}}">{{$marca->descripcion}}</textarea>
 <br>
-<input type="submit" value="Editar">
+
+<input type="submit" value="Modificar">
+<a href="{{url('marca')}}">Regresar</a>
 </form>

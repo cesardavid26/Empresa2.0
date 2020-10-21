@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
@@ -58,7 +59,8 @@ class ProductoController extends Controller
         Producto::insert($datosProducto);
         
 
-        return response()->json($datosProducto);
+        //return response()->json($datosProducto);
+        return redirect('producto');
     }
     
 
@@ -99,6 +101,15 @@ class ProductoController extends Controller
     {
         //
         $datosProducto=request()->except(['_token', '_method']);
+
+        if($request->hasFile('foto')){
+            $producto= Producto::findOrFail($id);
+            \Storage::delete('public/'.$producto->foto);
+            $datosProducto['foto']=$request->file('foto')->store('uploads','public');
+
+        }
+
+
         Producto::where('id', '=', $id)->update($datosProducto);
 
         $marcas=Marca::get();
@@ -116,7 +127,11 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         //
-        Producto::destroy($id);
+        $producto= Producto::findOrFail($id);
+        if(\Storage::delete('public/'.$producto->foto)){
+            Producto::destroy($id);
+        }
+        
         return redirect('producto');
     }
 }

@@ -8,5 +8,5 @@ aqui se crean marcas
 <textarea type="text" name="descripcion" id="descripcion" rows="4" cols="50" value=""></textarea>
 <br>
 <input type="submit" value="Agregar">
-
+<a href="{{url('marca')}}">Regresar</a>
 </form>

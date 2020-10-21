@@ -12,5 +12,5 @@ aqui se crean catetorias
  
 </select><br>
 <input type="submit" value="Agregar">
-
+<a href="{{url('categoria')}}">Regresar</a>
 </form>

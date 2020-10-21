@@ -16,6 +16,7 @@ Seccion para editar una categoria
  
 </select><br>
 
-<input type="submit" value="Editar">
+<input type="submit" value="Modificar">
+<a href="{{url('categoria')}}">Regresar</a>
 
 </form>
