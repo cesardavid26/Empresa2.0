@@ -15,7 +15,8 @@ class MarcaController extends Controller
     public function index()
     {
         //
-        return view('marca.indexMAR');
+        $datos['marcas']=Marca::paginate(5);
+        return view('marca.indexMAR', $datos);
     }
 
     /**
@@ -64,9 +65,11 @@ class MarcaController extends Controller
      * @param  \App\Models\Marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function edit(Marca $marca)
+    public function edit($id)
     {
         //
+        $marca= Marca::findOrFail($id);
+        return view('marca.editMAR', compact('marca'));
     }
 
     /**
@@ -76,9 +79,16 @@ class MarcaController extends Controller
      * @param  \App\Models\Marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Marca $marca)
+    public function update(Request $request, $id)
     {
         //
+        $datosMarca=request()->except(['_token', '_method']);
+        Marca::where('id', '=', $id)->update($datosMarca);
+
+        $marca= Marca::findOrFail($id);
+        return view('marca.editMAR', compact('marca'));
+
+
     }
 
     /**
@@ -87,8 +97,10 @@ class MarcaController extends Controller
      * @param  \App\Models\Marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Marca $marca)
+    public function destroy($id)
     {
         //
+        Marca::destroy($id);
+        return redirect('marca');
     }
 }

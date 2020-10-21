@@ -6,10 +6,11 @@ aqui se crean catetorias
 
 <label for="estado">{{'Estado'}}</label>
 <select name="estado" id="estado">
+<option value="">Seleccione</option>
   <option value="Activa">Activa</option>
   <option value="No Activa">No Activa</option>
  
-</select>
+</select><br>
 <input type="submit" value="Agregar">
 
 </form>

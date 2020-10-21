@@ -15,7 +15,8 @@ class CategoriaController extends Controller
     public function index()
     {
         //
-        return view('categoria.indexCAT');
+        $datos['categorias']=Categoria::paginate(5);
+        return view('categoria.indexCAT', $datos);
     }
 
     /**
@@ -63,9 +64,11 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categoria $categoria)
+    public function edit($id)
     {
         //
+        $categoria= Categoria::findOrFail($id);
+        return view('categoria.editCAT', compact('categoria'));
     }
 
     /**
@@ -75,9 +78,14 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request, $id)
     {
         //
+        $datosCategoria=request()->except(['_token', '_method']);
+        Categoria::where('id', '=', $id)->update($datosCategoria);
+
+        $categoria= Categoria::findOrFail($id);
+        return view('categoria.editCAT', compact('categoria'));
     }
 
     /**
@@ -86,8 +94,10 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy($id)
     {
         //
+        Categoria::destroy($id);
+        return redirect('categoria');
     }
 }
