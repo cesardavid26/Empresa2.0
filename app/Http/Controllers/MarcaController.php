@@ -45,7 +45,7 @@ class MarcaController extends Controller
         Marca::insert($datosMarca);
         
 
-        return response()->json($datosMarca);
+        return redirect('marca')->with('Mensaje', '¡Marca agregada agregada con éxito!');
     }
 
     /**
@@ -85,9 +85,10 @@ class MarcaController extends Controller
         $datosMarca=request()->except(['_token', '_method']);
         Marca::where('id', '=', $id)->update($datosMarca);
 
-        $marca= Marca::findOrFail($id);
-        return view('marca.editMAR', compact('marca'));
+        //$marca= Marca::findOrFail($id);
+        //return view('marca.editMAR', compact('marca'));
 
+        return redirect('marca')->with('Mensaje', '¡Marca modificada con éxito!');
 
     }
 
@@ -101,6 +102,7 @@ class MarcaController extends Controller
     {
         //
         Marca::destroy($id);
-        return redirect('marca');
+        return redirect('marca')->with('Mensaje', '¡Marca eliminada!');
+
     }
 }

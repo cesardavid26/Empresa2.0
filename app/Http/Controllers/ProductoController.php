@@ -60,7 +60,7 @@ class ProductoController extends Controller
         
 
         //return response()->json($datosProducto);
-        return redirect('producto');
+        return redirect('producto')->with('Mensaje', '¡Producto agregado con éxito!');
     }
     
 
@@ -114,8 +114,12 @@ class ProductoController extends Controller
 
         $marcas=Marca::get();
         $categorias=Categoria::get();
-        $producto= Producto::findOrFail($id);
-        return view('producto.editPRO', compact(['producto', 'marcas', 'categorias']));
+        //$producto= Producto::findOrFail($id);
+        //return view('producto', compact(['producto', 'marcas', 'categorias']));
+
+       return redirect('producto')->with('Mensaje', '¡Producto modificado con éxito!');
+
+
     }
 
     /**
@@ -132,6 +136,6 @@ class ProductoController extends Controller
             Producto::destroy($id);
         }
         
-        return redirect('producto');
+        return redirect('producto')->with('Mensaje', '¡Producto eliminado!');
     }
 }

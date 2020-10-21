@@ -44,7 +44,7 @@ class CategoriaController extends Controller
         Categoria::insert($datosCategoria);
         
 
-        return response()->json($datosCategoria);
+        return redirect('categoria')->with('Mensaje', '¡Categoria agregada con éxito!');
     }
 
     /**
@@ -84,8 +84,10 @@ class CategoriaController extends Controller
         $datosCategoria=request()->except(['_token', '_method']);
         Categoria::where('id', '=', $id)->update($datosCategoria);
 
-        $categoria= Categoria::findOrFail($id);
-        return view('categoria.editCAT', compact('categoria'));
+        //$categoria= Categoria::findOrFail($id);
+        //return view('categoria.editCAT', compact('categoria'));
+        return redirect('categoria')->with('Mensaje', '¡Categoria modificada con éxito!');
+
     }
 
     /**
@@ -98,6 +100,7 @@ class CategoriaController extends Controller
     {
         //
         Categoria::destroy($id);
-        return redirect('categoria');
+        return redirect('categoria')->with('Mensaje', '¡Categoria eliminada!');
+
     }
 }

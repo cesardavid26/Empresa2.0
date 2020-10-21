@@ -1,3 +1,9 @@
+
+@if(Session::has('Mensaje')){{
+Session::get('Mensaje')
+}}
+@endif
+
 <a href="{{url('marca/create')}}">Agregar Marca</a>
 
 <table class="table table-light">
