@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::resource('/categoria', '\App\Http\Controllers\CategoriaController');
 Route::resource('/marca', '\App\Http\Controllers\MarcaController');
 Route::resource('/producto', '\App\Http\Controllers\ProductoController');
+
+Auth::routes(['register'=>false, 'reset'=>false]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

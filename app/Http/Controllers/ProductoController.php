@@ -18,10 +18,18 @@ class ProductoController extends Controller
     public function index()
     {
         //
-        $datos = Producto::select('p.id', 'p.foto','p.nombre', 'p.referencia', 'p.descripcioncorta', 'p.valor', 'p.categoria_id','p.estado','m.nombre as nombre_marca')
+        $datos = Producto::select('p.id', 'p.foto','p.nombre', 'p.referencia', 'p.descripcioncorta', 'p.valor', 'p.categoria_id','p.estado','m.nombre as nombre_marca', 'c.nombre as nombre_categoria')
         ->from('productos as p')
-        ->join('marcas as m', function($join){
-            $join->on('m.id', '=', 'p.marca_id');})->paginate(5);
+        ->join('marcas as m', 
+        function($join){
+            $join->on('m.id', '=', 'p.marca_id');
+           
+        })
+        ->join('categorias as c', 
+        function($join){
+            $join->on('c.id', '=', 'p.categoria_id');
+           
+        })->paginate(5);
         
         return view('producto.indexPRO', compact('datos'));
     }

@@ -1,11 +1,21 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container">
+
 @if(Session::has('Mensaje')){{
 Session::get('Mensaje')
 }}
 @endif
 
-<a href="{{url('producto/create')}}">Agregar Producto</a>
-
-<table class="table table-light">
+<a href="{{url('producto/create')}}" class="btn btn-success">Agregar Producto</a>
+<br><bR>
+<style>
+  .estado1 {background-color : ##5cb85c !important; }
+  .estado2 {background-color : ##d9534f !important; }
+</style>
+<table class="table table-light table-bordered table-hover">
     <thead class="thead-light">
         <tr>
             <th>#</th>
@@ -28,23 +38,27 @@ Session::get('Mensaje')
             <td>{{$loop->iteration}}</td>
 
             <td>
-            <img src="{{asset('storage').'/'.$producto->foto}}" alt="" width="150">
+            <img src="{{asset('storage').'/'.$producto->foto}}" class="img-thumbnail img-fluid " alt="" width="160">
             </td>
             <td>{{$producto->nombre}}</td>
             <td>{{$producto->referencia}}</td>
             <td>{{$producto->descripcioncorta}}</td>
             <td>{{$producto->valor}}</td>
-            <td>{{$producto->categoria_id}}</td>
+            <td>{{$producto->nombre_categoria}}</td>
             <td>{{$producto->nombre_marca}}</td>
-            <td>{{$producto->estado}}</td>
-            <td><a href="{{url('/producto/'.$producto->id.'/edit')}}">
+            @if($producto->estado == 'Disponible')
+            <td class="table-success">{{ $producto->estado}}</td>
+            @elseif($producto->estado == 'Agotado')
+            <td class="table-danger">{{ $producto->estado}}</td>
+            @endif
+            <td>
+            <a class="btn btn-warning" href="{{url('/producto/'.$producto->id.'/edit')}}">
             Editar
-            </a>  | 
-            
-            <form method="post" action="{{url('/producto/'.$producto->id)}}">
+            </a> <br>
+            <form method="post" action="{{url('/producto/'.$producto->id)}}" style="display:inline">
             {{csrf_field()}}
             {{method_field('DELETE')}}
-            <button type="submit" onClick="return confirm('¿Borrar?');">Borrar</button> 
+            <button class="btn btn-danger" type="submit" onClick="return confirm('¿Borrar?');">Borrar</button> 
             </form>
             
             </td>
@@ -55,3 +69,5 @@ Session::get('Mensaje')
     </tbody>
 
 </table>
+</div>
+@endsection

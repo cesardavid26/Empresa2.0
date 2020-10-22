@@ -1,11 +1,17 @@
 
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container">
+
 @if(Session::has('Mensaje')){{
 Session::get('Mensaje')
 }}
 @endif
 
-<a href="{{url('marca/create')}}">Agregar Marca</a>
-
+<a href="{{url('marca/create')}}" class="btn btn-success">Agregar Marca</a>
+<br><br>
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
@@ -24,14 +30,13 @@ Session::get('Mensaje')
             <td>{{$marca->nombre}}</td>
             <td>{{$marca->descripcion}}</td>
             <td>
-            <a href="{{url('/marca/'.$marca->id.'/edit')}}">
+            <a class="btn btn-warning" href="{{url('/marca/'.$marca->id.'/edit')}}">
             Editar
-            </a> | 
-            
-            <form method="post" action="{{url('/marca/'.$marca->id)}}">
+            </a> 
+            <form method="post" action="{{url('/marca/'.$marca->id)}}" style="display:inline">
             {{csrf_field()}}
             {{method_field('DELETE')}}
-            <button type="submit" onClick="return confirm('¿Borrar?');">Borrar</button> 
+            <button class="btn btn-danger" type="submit" onClick="return confirm('¿Borrar?');">Borrar</button> 
             </form>
             
             </td>
@@ -42,3 +47,5 @@ Session::get('Mensaje')
     </tbody>
 
 </table>
+</div>
+@endsection

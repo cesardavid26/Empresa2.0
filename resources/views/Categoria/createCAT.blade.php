@@ -1,16 +1,12 @@
-aqui se crean catetorias
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container">
 <form action="{{url('/categoria')}}" method="post" enctype="multipart/form-data">
 {{csrf_field()}}
-<label for="descripcion">{{'Descripcion'}}</label>
-<textarea type="text" name="descripcion" id="descripcion" rows="4" cols="50" value=""></textarea><br>
+@include('categoria.formCAT',['Modo'=>'crear']);
 
-<label for="estado">{{'Estado'}}</label>
-<select name="estado" id="estado">
-<option value="">Seleccione</option>
-  <option value="Activa">Activa</option>
-  <option value="No Activa">No Activa</option>
- 
-</select><br>
-<input type="submit" value="Agregar">
-<a href="{{url('categoria')}}">Regresar</a>
 </form>
+</div>
+@endsection
