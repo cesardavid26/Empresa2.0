@@ -6,7 +6,7 @@
 <form action="{{url('/marca')}}" method="post" enctype="multipart/form-data">
 {{csrf_field()}}
 
-@include('marca.formMAR',['Modo'=>'crear']);
+@include('marca.formMAR',['Modo'=>'crear'])
 </form>
 </div>
 @endsection

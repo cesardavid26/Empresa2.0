@@ -6,7 +6,7 @@
 <form action="{{url('/marca/'.$marca->id)}}" method="post" enctype="multipart/form-data">
 {{csrf_field()}}
 {{method_field('PATCH')}}
-@include('marca.formMAR',['Modo'=>'editar']);
+@include('marca.formMAR',['Modo'=>'editar'])
 </form>
 </div>
 @endsection

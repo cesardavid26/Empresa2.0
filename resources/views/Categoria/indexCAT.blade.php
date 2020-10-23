@@ -11,7 +11,7 @@ Session::get('Mensaje')
 
 <a href="{{url('categoria/create')}}" class="btn btn-success">Agregar Categoria</a>
 <br><br>
-<table class="table table-light">
+<table class="table table-light table-bordered table-hover">
     <thead class="thead-light">
         <tr>
             <th>#</th>

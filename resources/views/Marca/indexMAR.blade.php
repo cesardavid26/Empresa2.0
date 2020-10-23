@@ -12,7 +12,7 @@ Session::get('Mensaje')
 
 <a href="{{url('marca/create')}}" class="btn btn-success">Agregar Marca</a>
 <br><br>
-<table class="table table-light">
+<table class="table table-light table-bordered table-hover">
     <thead class="thead-light">
         <tr>
             <th>#</th>
