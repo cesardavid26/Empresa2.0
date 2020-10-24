@@ -5,9 +5,10 @@
 
 <div class="container">
 
-@if(Session::has('Mensaje')){{
-Session::get('Mensaje')
-}}
+@if(Session::has('Mensaje'))
+<div class="alert alert-success" role="alert">
+{{Session::get('Mensaje')}}
+</div>
 @endif
 
 <a href="{{url('marca/create')}}" class="btn btn-success">Agregar Marca</a>
@@ -47,5 +48,6 @@ Session::get('Mensaje')
     </tbody>
 
 </table>
+{{ $marcas->links() }}
 </div>
 @endsection

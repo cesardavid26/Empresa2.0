@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/categoria', '\App\Http\Controllers\CategoriaController');
-Route::resource('/marca', '\App\Http\Controllers\MarcaController');
-Route::resource('/producto', '\App\Http\Controllers\ProductoController');
+Route::resource('/categoria', '\App\Http\Controllers\CategoriaController')->middleware('auth');
+Route::resource('/marca', '\App\Http\Controllers\MarcaController')->middleware('auth');
+Route::resource('/producto', '\App\Http\Controllers\ProductoController')->middleware('auth');
 
 Auth::routes(['register'=>false, 'reset'=>false]);
 

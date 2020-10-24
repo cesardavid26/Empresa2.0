@@ -1,12 +1,12 @@
 
 <div class="form-group">
 <label for="nombre">{{'Nombre'}}</label>
-<input type="text" name="nombre" id="nombre" class="form-control" value="{{isset($marca->nombre)?$marca->nombre:''}}"><br>
+<input type="text" name="nombre" id="nombre" class="form-control" value="{{isset($marca->nombre)?$marca->nombre:''}}" required=""><br>
 </div>
 
 <div class="form-group">
 <label for="descripcion">{{'Descripcion'}}</label>
-<textarea type="text" name="descripcion" id="descripcion" rows="4" cols="50" class="form-control"
+<textarea type="text" name="descripcion" id="descripcion" rows="4" cols="50" class="form-control" required=""
  value="{{isset($marca->descripcion)?$marca->descripcion:''}}">{{isset($marca->descripcion)?$marca->descripcion:''}}</textarea>
 <br></div>
 
