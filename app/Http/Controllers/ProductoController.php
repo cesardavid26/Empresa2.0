@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\Marca;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,6 +19,7 @@ class ProductoController extends Controller
     public function index()
     {
         //
+        $empresa = Empresa::findOrFail(1);
         $datos = Producto::select('p.id', 'p.foto','p.nombre', 'p.referencia', 'p.descripcioncorta', 'p.valor', 'p.categoria_id','p.estado','m.nombre as nombre_marca', 'c.nombre as nombre_categoria')
         ->from('productos as p')
         ->join('marcas as m', 
@@ -31,7 +33,7 @@ class ProductoController extends Controller
            
         })->paginate(5);
         
-        return view('producto.indexPRO', compact('datos'));
+        return view('producto.indexPRO', compact('datos', 'empresa'));
     }
 
     /**
@@ -42,9 +44,10 @@ class ProductoController extends Controller
     public function create()
     {
         //
+        $empresa = Empresa::findOrFail(1);
         $marcas=Marca::all();
         $categorias=Categoria::all();
-        return view('producto.createPRO', compact('marcas'), compact('categorias'));
+        return view('producto.createPRO', compact('marcas', 'empresa'), compact('categorias'));
 
     }
 
@@ -78,9 +81,25 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function show(Producto $producto)
+    public function list()
     {
         //
+        $empresa = Empresa::findOrFail(1);
+        $listados = Producto::select('p.id', 'p.nombre', 'p.descripcioncorta', 'p.palabrasclave', 'p.detalle', 'p.foto', 'p.valor', 'c.nombre as categoria', 'm.nombre as marca')
+        ->from('productos as p')
+        ->join('categorias as c', function($join){
+            $join->on('p.categoria_id', '=', 'c.id')
+            ->where('p.estado', '=', 'Disponible')
+            ->where('c.estado', '=', 'Activada');
+        })->join('marcas as m', function($join){
+            $join->on('p.marca_id', '=', 'm.id');
+        })
+        ->orderBy('id', 'desc')
+        ->limit(8)
+        ->get();
+        
+
+        return view('welcome', compact('listados', 'empresa'));
     }
 
     /**
@@ -92,10 +111,11 @@ class ProductoController extends Controller
     public function edit($id)
     {
         //
+        $empresa = Empresa::findOrFail(1);
         $marcas=Marca::get();
         $categorias=Categoria::get();
         $producto= Producto::findOrFail($id);
-        return view('producto.editPRO', compact(['producto', 'marcas', 'categorias']));
+        return view('producto.editPRO', compact(['producto', 'marcas', 'categorias', 'empresa']));
     }
 
     /**

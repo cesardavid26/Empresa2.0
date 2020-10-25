@@ -70,6 +70,6 @@
     </tbody>
 
 </table>
-{{ $productos->links() }}
+{{ $datos->links() }}
 </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -15,8 +16,9 @@ class CategoriaController extends Controller
     public function index()
     {
         //
+        $empresa = Empresa::findOrFail(1);
         $datos['categorias']=Categoria::paginate(5);
-        return view('categoria.indexCAT', $datos);
+        return view('categoria.indexCAT', $datos, compact('empresa'));
     }
 
     /**
@@ -27,7 +29,8 @@ class CategoriaController extends Controller
     public function create()
     {
         //
-        return view('categoria.createCAT');
+        $empresa = Empresa::findOrFail(1);
+        return view('categoria.createCAT', compact('empresa'));
     }
 
     /**
@@ -67,8 +70,9 @@ class CategoriaController extends Controller
     public function edit($id)
     {
         //
+        $empresa = Empresa::findOrFail(1);
         $categoria= Categoria::findOrFail($id);
-        return view('categoria.editCAT', compact('categoria'));
+        return view('categoria.editCAT', compact('categoria', 'empresa'));
     }
 
     /**

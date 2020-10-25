@@ -13,13 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\EmpresaController::class, 'replace'])->name('welcome');
+Route::get('/', [App\Http\Controllers\ProductoController::class, 'list'])->name('welcome');
 
 Route::resource('/categoria', '\App\Http\Controllers\CategoriaController')->middleware('auth');
 Route::resource('/marca', '\App\Http\Controllers\MarcaController')->middleware('auth');
+Route::resource('/empresa', '\App\Http\Controllers\EmpresaController')->middleware('auth');
 Route::resource('/producto', '\App\Http\Controllers\ProductoController')->middleware('auth');
+
+
+
 
 Auth::routes(['register'=>false, 'reset'=>false]);
 

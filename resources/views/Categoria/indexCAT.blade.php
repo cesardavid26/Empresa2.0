@@ -11,6 +11,7 @@
 
 @endif
 
+    
 <a href="{{url('categoria/create')}}" class="btn btn-success">Agregar Categoria</a>
 <br><br>
 <style>
@@ -60,5 +61,5 @@
 </table>
 
 {{ $categorias->links() }}
-</div>
+
 @endsection
