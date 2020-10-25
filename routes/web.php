@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\EmpresaController::class, 'replace'])->name('welcome');
 Route::get('/', [App\Http\Controllers\ProductoController::class, 'list'])->name('welcome');
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+
 
 Route::resource('/categoria', '\App\Http\Controllers\CategoriaController')->middleware('auth');
 Route::resource('/marca', '\App\Http\Controllers\MarcaController')->middleware('auth');

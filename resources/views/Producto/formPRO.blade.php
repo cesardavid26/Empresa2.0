@@ -14,7 +14,9 @@
  <select name="categoria_id" id="categoria_id" class="form-control" required="">
                  <option values="">Seleccione...</option>
                 @foreach($categorias as $categoria)
-                <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                @if($categoria->estado == "Activada")
+                <option value="{{$categoria->id}}">{{$categoria->nombre}} - {{$categoria->descripcion}}</option>
+                @endif
                 @endforeach
             </select><br>
 </div>

@@ -25,6 +25,5 @@ class HomeController extends Controller
     {
         $empresa = Empresa::findOrFail(1);
         return view('home');
-        return view('home', compact('empresa'));
     }
 }

@@ -85,7 +85,7 @@ class ProductoController extends Controller
     {
         //
         $empresa = Empresa::findOrFail(1);
-        $listados = Producto::select('p.id', 'p.nombre', 'p.descripcioncorta', 'p.palabrasclave', 'p.detalle', 'p.foto', 'p.valor', 'c.nombre as categoria', 'm.nombre as marca')
+        $listados = Producto::select('p.id', 'p.nombre', 'p.descripcioncorta', 'p.palabrasclave', 'p.detalle', 'p.foto', 'p.valor', 'c.nombre as categoria', 'c.descripcion', 'm.nombre as marca')
         ->from('productos as p')
         ->join('categorias as c', function($join){
             $join->on('p.categoria_id', '=', 'c.id')
@@ -95,11 +95,33 @@ class ProductoController extends Controller
             $join->on('p.marca_id', '=', 'm.id');
         })
         ->orderBy('id', 'desc')
-        ->limit(8)
+        ->limit(6)
         ->get();
         
 
         return view('welcome', compact('listados', 'empresa'));
+    }
+
+    public function show(){
+        $empresa = Empresa::findOrFail(1);
+        $listados = Producto::select('p.id', 'p.estado', 'p.nombre', 'p.foto', 'p.descripcioncorta', 'p.detalle', 'p.valor', 'p.palabrasclave', 'c.nombre as categoria', 'm.nombre as marca')
+            ->from('productos as p')
+            ->join('categorias as c', function ($join) {
+                $join->on('p.categoria_id', '=', 'c.id')
+                    ->where('c.estado', '=', 'Activada');
+            })
+            ->join('marcas as m', function ($join) {
+                $join->on('p.marca_id', '=', 'm.id');
+            })
+            ->paginate(10);
+
+        $categorias = Categoria::select('id', 'nombre')
+            ->where('estado', '=', 'Activada')
+            ->get();
+
+        return view('producto.listPRO', compact('listados', 'categorias','empresa'));
+
+        
     }
 
     /**

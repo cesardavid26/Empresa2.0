@@ -60,6 +60,8 @@
 
 </table>
 
-{{ $categorias->links() }}
-
+{{ $categorias->links('pagination::bootstrap-4') }}
+</div>
+</div>
+</div>
 @endsection

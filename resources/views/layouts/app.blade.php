@@ -16,6 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
@@ -98,7 +99,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5>{{$listado->nombre}}</h5>
+            <h5 style="font-size: 25px; font-family: 'Bree Serif', serif;">{{$listado->nombre}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -108,11 +109,10 @@
               <img id="imgModalProducto" src="{{asset('storage').'/'.$listado->foto}}" height="200" width="180">
             </div>
             <div class="col-6">
-              <p>{{$listado->categoria}}</p>
+              <b><p>{{$listado->categoria}}</p></b>
               <p>{{$listado->descripcioncorta}}</p>
-              <b><p>{{$listado->valor}}</p></b>
-               
-              <a class="offset-8" href="">más ></a>
+              <b><p>${{$listado->valor}}</p></b>
+    
             </div>
             <p>{{$listado->detalle}}</p>
           </div>

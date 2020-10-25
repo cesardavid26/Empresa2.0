@@ -11,12 +11,12 @@
     
      <div id="productos" class="pt-2 pb-4">
            <h2 class="pt-2 pb-4" style="font-family: 'IBM Plex Sans', sans-serif;">Recientemente Agregados</h2>
-         <div class="row row-cols-1 row-cols-s-1 row-cols-md-2 row-cols-lg-4">
+         <div class="row row-cols-1 row-cols-s-1 row-cols-md-2 row-cols-lg-3">
                 @foreach($listados as $listado)
                   <div class="col mb-4">
                     <div class="card">
                       <a data-toggle="modal" data-target="#modalProducto{{$listado->id}}"><img src="{{asset('storage').'/'.$listado->foto}}" alt="Card image cap" height="150" width="180"  class="card-img-top" ></a>
-                      <div class="card-body">
+                       <div class="card-body">
                         <p class="card-text">{{$listado->nombre}}</p>
                         <b><p class="card-text">${{$listado->valor}}</p></b>
                       </div>
@@ -24,6 +24,9 @@
                   </div>
                   @endforeach
          </div>
+         <div class="pt-2 pb-4">
+                        <a class="btn btn-light" href="{{url('producto/show')}}">Ver Más</a>
+                    </div> 
                </div>  
     </div>
     <div class="col-sm-5">
