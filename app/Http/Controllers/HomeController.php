@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $empresa = Empresa::findOrFail(1);
         return view('home');
+        return view('home', compact('empresa'));
     }
 }
