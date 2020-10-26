@@ -17,6 +17,7 @@ Route::get('/', [App\Http\Controllers\EmpresaController::class, 'replace'])->nam
 Route::get('/', [App\Http\Controllers\ProductoController::class, 'list'])->name('welcome');
 
 
+
 Route::resource('/categoria', '\App\Http\Controllers\CategoriaController')->middleware('auth');
 Route::resource('/marca', '\App\Http\Controllers\MarcaController')->middleware('auth');
 Route::resource('/empresa', '\App\Http\Controllers\EmpresaController')->middleware('auth');

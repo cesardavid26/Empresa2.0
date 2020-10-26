@@ -102,7 +102,8 @@ class ProductoController extends Controller
         return view('welcome', compact('listados', 'empresa'));
     }
 
-    public function show(){
+    public function show(Request $request){
+
         $empresa = Empresa::findOrFail(1);
         $listados = Producto::select('p.id', 'p.estado', 'p.nombre', 'p.foto', 'p.descripcioncorta', 'p.detalle', 'p.valor', 'p.palabrasclave', 'c.nombre as categoria', 'm.nombre as marca')
             ->from('productos as p')
@@ -119,7 +120,13 @@ class ProductoController extends Controller
             ->where('estado', '=', 'Activada')
             ->get();
 
-        return view('producto.listPRO', compact('listados', 'categorias','empresa'));
+            if($request){
+                $query = trim($request->get('search'));
+                 $listados = Producto::where('nombre', 'LIKE', '%'.$query.'%')
+                 ->orderBy('id', 'asc')
+                 ->get();
+            }
+        return view('producto.listPRO', compact('listados', 'categorias','empresa'), ['search' => $query]);
 
         
     }
@@ -140,6 +147,7 @@ class ProductoController extends Controller
         return view('producto.editPRO', compact(['producto', 'marcas', 'categorias', 'empresa']));
     }
 
+    
     /**
      * Update the specified resource in storage.
      *

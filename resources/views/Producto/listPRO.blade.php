@@ -16,10 +16,27 @@
         </div>
      <div class="col-sm-8">
       <div id="productos" class="pt-2 pb-4">
-           <h2 class="pt-2 pb-4" style="font-family: 'IBM Plex Sans', sans-serif;">Listado de Productos</h2>
+           <h2 class="pt-2 pb-4" style="font-family: 'IBM Plex Sans', sans-serif;">Listado de Productos
+           <h6> 
+           @if($search)
+           <div class="alert alert-primary" role="alert">
+           Los resultados de tu busqueda '{{$search}}' son:
+           </div>
+           @endif
+           </h6>
+           </h2>
+           <form class="form-inline ml-3">
+           <div class="input-group ">
+           <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+           <div class="input-group-append">
+           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+           </div>
+           </div>
+           </form><br>
          <div class="row row-cols-1 row-cols-s-1 row-cols-md-2 row-cols-lg-4">
                 @foreach($listados as $listado)
                   <div class="col mb-4">
+                  
                   @if($listado->estado == "Agotado")
                     <div class="card text-white  bg-secondary mb-3">
                     @elseif($listado->estado == "Disponible")
