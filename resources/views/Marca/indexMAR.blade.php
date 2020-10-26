@@ -48,6 +48,6 @@
     </tbody>
 
 </table>
-{{ $marcas->links() }}
+{{ $marcas->links('pagination::bootstrap-4') }}
 </div>
 @endsection

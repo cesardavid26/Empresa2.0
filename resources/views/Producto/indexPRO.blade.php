@@ -70,6 +70,6 @@
     </tbody>
 
 </table>
-{{ $datos->links() }}
+{{ $datos->links('pagination::bootstrap-4') }}
 </div>
 @endsection
