@@ -50,6 +50,7 @@
     "prefer-stable": true,
     "scripts": {
         "post-update-cmd": "MyVendor\\MyClass::postUpdate",
+        "pre-install-cmd": "Test\\Build\\ComposerHooks::preInstall",
         "post-package-install": [
             "MyVendor\\MyClass::postPackageInstall"
         ],
