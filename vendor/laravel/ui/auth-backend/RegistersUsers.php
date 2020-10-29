@@ -5,6 +5,7 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Models\Empresa;
 use Illuminate\Support\Facades\Auth;
 
 trait RegistersUsers
@@ -18,7 +19,8 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        $empresa = Empresa::findOrFail(1);
+        return view('auth.register', compact('empresa'));
     }
 
     /**

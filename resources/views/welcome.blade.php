@@ -10,8 +10,8 @@
        <p>{{$empresa->quienessomos}}</p>
     
      <div id="productos" class="pt-2 pb-4">
-           <h2 class="pt-2 pb-4" style="font-family: 'IBM Plex Sans', sans-serif;">Recientemente Agregados</h2>
-         <div class="row row-cols-1 row-cols-s-1 row-cols-md-2 row-cols-lg-3">
+           <h2 class="pb-4" style="font-family: 'IBM Plex Sans', sans-serif;">Recientemente Agregados</h2>
+         <div class="row row-cols-1 row-cols-s-1 row-cols-md-2 row-cols-lg-4">
                 @foreach($listados as $listado)
                   <div class="col mb-4">
                     <div class="card">
