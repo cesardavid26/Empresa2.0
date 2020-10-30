@@ -7,7 +7,10 @@
 {{csrf_field()}}
 {{method_field('PATCH')}}
 
+
+
 @include('Producto.formPRO',['Modo'=>'editar'])
+
 
 
 </form>

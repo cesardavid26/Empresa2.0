@@ -13,7 +13,7 @@ value="{{isset($categoria->descripcion)?$categoria->descripcion:''}}">{{isset($c
 
 <div class="form-group">
 <label for="estado">{{'Estado'}}</label>
-<select class="form-control" name="estado" id="estado" required="">
+<select class="form-control" name="estado" id="estado" required>
 <option value="">Seleccione</option>
   <option value="Activada">Activada</option>
   <option value="Desactivada">Desactivada</option>

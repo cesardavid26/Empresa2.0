@@ -1,8 +1,8 @@
 
 <div class="form-group">
 <label for="marca">{{'Marca'}}</label>
- <select name="marca_id" id="marca_id" class="form-control" required="">
-                <option values="">Seleccione...</option>
+ <select name="marca_id" id="marca_id" class="form-control" required>
+                <option value="">Seleccione...</option>
                 @foreach($marcas as $marca)
                 <option value="{{$marca->id}}">{{$marca->nombre}}</option>
                 @endforeach
@@ -11,8 +11,8 @@
 
 <div class="form-group">
 <label for="categoria">{{'Categoria'}}</label>
- <select name="categoria_id" id="categoria_id" class="form-control" required="">
-                 <option values="">Seleccione...</option>
+ <select name="categoria_id" id="categoria_id" class="form-control" required>
+                 <option value="">Seleccione...</option>
                 @foreach($categorias as $categoria)
                 @if($categoria->estado == "Activada")
                 <option value="{{$categoria->id}}">{{$categoria->nombre}} - {{$categoria->descripcion}}</option>
@@ -59,8 +59,8 @@ value="{{isset($producto->palabrasclave)?$producto->palabrasclave:old('detalle')
 
 <div class="form-group">
 <label for="estado">{{'Estado'}}</label>
-<select name="estado" id="estado" class="form-control" required="">
-                <option values="">Seleccione...</option>
+<select name="estado" id="estado" class="form-control" required>
+                <option value="">Seleccione...</option>
   <option value="Disponible">Disponible</option>
   <option value="Agotado">Agotado</option>
  
@@ -69,11 +69,11 @@ value="{{isset($producto->palabrasclave)?$producto->palabrasclave:old('detalle')
 <div class="form-group">
 <label for="foto">{{'Foto'}}</label>
 @if(isset($producto->foto))
-<img class="img-fluid img-thumbnail" src="{{asset('storage').'/'.$producto->foto}}" alt="" width="150">
+<img class="img-fluid img-thumbnail" src="{{asset('storage').'/'.$producto->foto}}" alt="" width="150" required>
 
 @endif
-<input type="file" name="foto" id="foto" value="" class="form-control-file"><br>
 </div>
+<input type="file" name="foto" id="foto" value="" accept="image/*" class="form-control-file"><br>
 
 <input class="btn btn-success" type="submit" value="{{$Modo=='crear' ? 'Agregar':'Modificar'}}
 ">

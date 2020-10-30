@@ -126,7 +126,7 @@ class ProductoController extends Controller
                  ->orderBy('id', 'asc')
                  ->get();
             }
-        return view('producto.listPRO', compact('listados', 'categorias','empresa'), ['search' => $query]);
+        return view('Producto.listPRO', compact('listados', 'categorias','empresa'), ['search' => $query]);
 
         
     }

@@ -6,7 +6,10 @@
 <form action="{{url('/producto')}}" method="post" enctype="multipart/form-data" >
 {{csrf_field()}}
 
+
 @include('Producto.formPRO',['Modo'=>'crear'])
+
+
 
 </form>
 </div>
