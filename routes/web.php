@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\EmpresaController::class, 'replace'])->name('welcome');
 Route::get('/', [App\Http\Controllers\ProductoController::class, 'list'])->name('welcome');
+Route::get('/producto/listPRO', [App\Http\Controllers\ProductoController::class, 'show'])->name('listPRO');
 
 
 

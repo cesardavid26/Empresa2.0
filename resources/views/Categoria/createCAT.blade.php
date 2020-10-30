@@ -5,7 +5,7 @@
 <div class="container">
 <form action="{{url('/categoria')}}" class="form-horizontal" method="post" enctype="multipart/form-data">
 {{csrf_field()}}
-@include('categoria.formCAT',['Modo'=>'crear'])
+@include('Categoria.formCAT',['Modo'=>'crear'])
 
 </form>
 </div>

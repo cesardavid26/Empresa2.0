@@ -8,7 +8,7 @@
 {{csrf_field()}}
 {{method_field('PATCH')}}
 
-@include('categoria.formCAT',['Modo'=>'editar'])
+@include('Categoria.formCAT',['Modo'=>'editar'])
 
 </form>
 </div>

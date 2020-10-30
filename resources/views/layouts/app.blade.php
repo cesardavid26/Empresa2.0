@@ -106,7 +106,7 @@
           </div>
           <div class="row modal-body">
             <div class="col-6">
-              <img id="imgModalProducto" src="{{asset('storage').'/'.$listado->foto}}" height="200" width="180">
+              <img src="{{asset('storage').'/'.$listado->foto}}" style="width:100%;" >
             </div>
             <div class="col-6">
               <b><p>{{$listado->categoria}}</p></b>

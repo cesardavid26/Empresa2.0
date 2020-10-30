@@ -17,7 +17,7 @@ class EmpresaController extends Controller
         //
         $empresa = Empresa::findOrFail(1);
         $datos['empresas']=Empresa::paginate(1);
-        return view('empresa.indexEMP', $datos, compact('empresa'));
+        return view('Empresa.indexEMP', $datos, compact('empresa'));
     }
 
     /**
@@ -66,7 +66,7 @@ class EmpresaController extends Controller
     {
         //
         $empresa= Empresa::findOrFail($id);
-        return view('empresa.editEMP', compact('empresa'));
+        return view('Empresa.editEMP', compact('empresa'));
     }
 
     public function replace(){

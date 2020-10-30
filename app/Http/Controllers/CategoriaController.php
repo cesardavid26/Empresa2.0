@@ -18,7 +18,7 @@ class CategoriaController extends Controller
         //
         $empresa = Empresa::findOrFail(1);
         $datos['categorias']=Categoria::paginate(5);
-        return view('categoria.indexCAT', $datos, compact('empresa'));
+        return view('Categoria.indexCAT', $datos, compact('empresa'));
     }
 
     /**
@@ -30,7 +30,7 @@ class CategoriaController extends Controller
     {
         //
         $empresa = Empresa::findOrFail(1);
-        return view('categoria.createCAT', compact('empresa'));
+        return view('Categoria.createCAT', compact('empresa'));
     }
 
     /**
@@ -72,7 +72,7 @@ class CategoriaController extends Controller
         //
         $empresa = Empresa::findOrFail(1);
         $categoria= Categoria::findOrFail($id);
-        return view('categoria.editCAT', compact('categoria', 'empresa'));
+        return view('Categoria.editCAT', compact('categoria', 'empresa'));
     }
 
     /**

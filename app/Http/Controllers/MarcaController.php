@@ -18,7 +18,7 @@ class MarcaController extends Controller
         //
         $empresa = Empresa::findOrFail(1);
         $datos['marcas']=Marca::paginate(5);
-        return view('marca.indexMAR', $datos, compact('empresa'));
+        return view('Marca.indexMAR', $datos, compact('empresa'));
     }
 
     /**
@@ -30,7 +30,7 @@ class MarcaController extends Controller
     {
         //
         $empresa = Empresa::findOrFail(1);
-        return view('marca.createMAR', compact('empresa'));
+        return view('Marca.createMAR', compact('empresa'));
     }
 
     /**
@@ -73,7 +73,7 @@ class MarcaController extends Controller
         //
         $empresa = Empresa::findOrFail(1);
         $marca= Marca::findOrFail($id);
-        return view('marca.editMAR', compact('marca', 'empresa'));
+        return view('Marca.editMAR', compact('marca', 'empresa'));
     }
 
     /**

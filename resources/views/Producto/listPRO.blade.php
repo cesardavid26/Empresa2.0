@@ -9,7 +9,7 @@
                 <h5>Categorias</h5>
                 @isset($categorias)
                 @foreach($categorias as $categoria)
-                <a class="nav-link" href="{{url('/listado/'.$categoria->id.'/filter')}}">{{$categoria->nombre}}</a>
+                <a class="nav-link" href="#">{{$categoria->nombre}}</a>
                 @endforeach
                 @endisset
             </div>
@@ -42,7 +42,7 @@
                     @elseif($listado->estado == "Disponible")
                      <div class="card  bg-white mb-3">
                      @endif
-                      <a data-toggle="modal" data-target="#modalProducto{{$listado->id}}"><img src="{{asset('storage').'/'.$listado->foto}}" alt="Card image cap" height="140" width="180"  class="card-img-top" ></a>
+                      <a data-toggle="modal" data-target="#modalProducto{{$listado->id}}"><img src="{{asset('storage').'/'.$listado->foto}}" alt="Card image cap" height="220"   class="card-img-top" ></a>
                        <div class="card-body">
                         <p class="card-text" style="font-size: 15px;">{{$listado->nombre}}</p>
                         <b><p class="card-text">${{$listado->valor}}</p></b>

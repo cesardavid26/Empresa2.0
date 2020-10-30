@@ -33,7 +33,7 @@ class ProductoController extends Controller
            
         })->paginate(5);
         
-        return view('producto.indexPRO', compact('datos', 'empresa'));
+        return view('Producto.indexPRO', compact('datos', 'empresa'));
     }
 
     /**
@@ -47,7 +47,7 @@ class ProductoController extends Controller
         $empresa = Empresa::findOrFail(1);
         $marcas=Marca::all();
         $categorias=Categoria::all();
-        return view('producto.createPRO', compact('marcas', 'empresa'), compact('categorias'));
+        return view('Producto.createPRO', compact('marcas', 'empresa'), compact('categorias'));
 
     }
 
@@ -144,7 +144,7 @@ class ProductoController extends Controller
         $marcas=Marca::get();
         $categorias=Categoria::get();
         $producto= Producto::findOrFail($id);
-        return view('producto.editPRO', compact(['producto', 'marcas', 'categorias', 'empresa']));
+        return view('Producto.editPRO', compact(['producto', 'marcas', 'categorias', 'empresa']));
     }
 
     
